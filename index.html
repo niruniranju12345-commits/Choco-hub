@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ChocoHub 🍫</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;background:#fff6eb;color:#542d27}
+nav{display:flex;justify-content:space-between;align-items:center;padding:20px 7%;background:#fffaf2;position:sticky;top:0;z-index:10;box-shadow:0 3px 15px #552c2710}
+.logo{font:700 30px Fredoka;color:#63352a}
+.logo span{color:#f27b9c}
+nav a{text-decoration:none;color:inherit}
+.links{display:flex;gap:25px;font-size:14px}
+.btn{display:inline-block;background:#63352a;color:white;padding:13px 23px;border:0;border-radius:30px;text-decoration:none;font-weight:600;cursor:pointer;transition:.25s}
+.btn:hover{background:#e87999;transform:translateY(-3px)}
+.hero{min-height:570px;padding:65px 8%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:35px;background:linear-gradient(130deg,#ffebdf,#ffe0e8)}
+.tag{display:inline-block;background:white;color:#e16e8d;padding:9px 16px;border-radius:25px;font-size:12px;font-weight:600}
+h1{font:700 clamp(45px,6vw,76px)/1.08 Fredoka;margin:22px 0}
+.pink{color:#ee7799}
+.hero p{color:#805c50;line-height:1.9;margin-bottom:25px;max-width:440px}
+.art{height:370px;display:grid;place-items:center;position:relative}
+.circle{position:absolute;width:300px;height:300px;border-radius:50%;background:#ffc7d6}
+.chocolate{width:195px;height:245px;border-radius:28px 28px 38px 38px;background:linear-gradient(120deg,#92543a,#4b211b);box-shadow:inset 8px 5px #b77a58,0 17px 0 #d5a18b,0 28px 30px #60362c30;position:relative;z-index:1;transform:rotate(-7deg);animation:bounce 3s infinite}
+.chocolate:after{content:"CHOCO ♡";position:absolute;bottom:22px;left:0;right:0;text-align:center;color:#ffe1b1;font:600 20px Fredoka}
+.eyes{display:flex;gap:30px;justify-content:center;padding-top:78px}
+.eye{height:34px;width:27px;border-radius:50%;background:white;position:relative}
+.eye:after{content:"";position:absolute;width:12px;height:18px;background:#24110d;border-radius:50%;left:8px;bottom:3px}
+.eye:before{content:"";position:absolute;width:5px;height:6px;background:white;border-radius:50%;top:6px;left:10px;z-index:1}
+.blush{position:absolute;top:140px;width:26px;height:13px;border-radius:50%;background:#fa8fa8}
+.blush.l{left:20px}.blush.r{right:20px}
+.mouth{position:absolute;top:138px;left:calc(50% - 16px);width:32px;height:25px;background:#27100e;border-radius:5px 5px 16px 16px;overflow:hidden}
+.mouth:after{content:"";position:absolute;width:23px;height:14px;bottom:-4px;left:4px;background:#ff739a;border-radius:50% 50% 0 0}
+.float{position:absolute;font-size:39px;animation:bounce 3s infinite}
+.f1{top:25px;left:8%}.f2{top:35px;right:4%}.f3{bottom:25px;left:10%}.f4{bottom:30px;right:8%}
+@keyframes bounce{50%{transform:translateY(-12px) rotate(3deg)}}
+.ticker{background:#65382e;color:white;padding:15px;text-align:center;font:600 16px Fredoka;letter-spacing:1px}
+section{padding:75px 8%}
+.heading{text-align:center;margin-bottom:40px}
+.heading h2{font:700 clamp(32px,4vw,46px) Fredoka}
+.heading p{font-size:14px;color:#98796d;margin-top:10px}
+.products{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:white;padding:16px;border-radius:25px;text-align:center;border:1px solid #f3e2d6;transition:.3s}
+.card:hover{transform:translateY(-8px);box-shadow:0 15px 30px #542d2715}
+.product-art{height:200px;border-radius:18px;display:grid;place-items:center;position:relative;margin-bottom:20px}
+.pink-bg{background:#fbdce5}.yellow-bg{background:#ffedc5}.green-bg{background:#d8f0df}
+.mini{height:115px;width:90px;border-radius:16px 16px 22px 22px;background:linear-gradient(120deg,#a66b4d,#4c251d);box-shadow:inset 5px 4px #bb8666,0 8px 0 #d5a38b;position:relative;transform:rotate(-5deg)}
+.mini:before,.mini:after{content:"";position:absolute;top:35px;width:12px;height:16px;background:white;border-radius:50%}
+.mini:before{left:21px}.mini:after{right:21px}
+.pupils{position:absolute;top:41px;left:27px;width:5px;height:8px;background:#24110d;border-radius:50%;box-shadow:30px 0 #24110d}
+.smile{position:absolute;top:61px;left:34px;width:22px;height:14px;background:#ff7798;border:2px solid #321713;border-top:0;border-radius:0 0 12px 12px}
+.card h3{font:600 23px Fredoka}
+.card p{font-size:13px;color:#987b70;margin:9px 0 16px}
+.price{color:#e87999;font-weight:600;font-size:13px}
+.add{width:38px;height:38px;border:0;border-radius:50%;background:#ffe0e8;color:#71394b;font-size:23px;cursor:pointer;margin-left:12px}
+.add:hover{background:#ffbed0}
+.factory{background:#e1f2e4;border-radius:30px;padding:45px;display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center}
+.factory h2{font:700 42px/1.1 Fredoka}
+.factory p{color:#647c68;font-size:14px;line-height:1.9;margin:18px 0 25px}
+.factory-art{text-align:center;font-size:100px;animation:bounce 3s infinite}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:25px;text-align:center}
+.step .emoji{font-size:45px;margin-bottom:12px}
+.step h3{font:600 22px Fredoka;margin-bottom:10px}
+.step p{font-size:13px;line-height:1.8;color:#92776c}
+.newsletter{text-align:center;background:#fbdce5;border-radius:28px;padding:45px 20px}
+.newsletter h2{font:700 37px Fredoka}
+.newsletter p{font-size:14px;margin:12px 0 22px}
+.newsletter input{padding:14px 18px;border:2px solid white;border-radius:30px;outline:none;font:14px Poppins;max-width:100%;width:280px;margin:5px}
+footer{background:#492820;color:#fff4e8;padding:35px 8%;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+footer p{font-size:12px;color:#ddbcad;margin-top:8px}
+footer .logo{color:white}
+#toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,100px);background:#492820;color:white;padding:13px 22px;border-radius:30px;transition:.3s;z-index:20;font-size:13px;max-width:90%;text-align:center}
+#toast.show{transform:translate(-50%,0)}
+@media(max-width:750px){
+ .links{display:none}
+ .hero{grid-template-columns:1fr;text-align:center;padding:50px 6% 30px}
+ .hero p{margin:0 auto 25px}
+ .art{height:340px}
+ .circle{width:260px;height:260px}
+ .products{grid-template-columns:1fr;max-width:400px;margin:auto}
+ .factory{grid-template-columns:1fr;text-align:center;padding:30px 20px}
+ .factory h2{font-size:35px}
+ .steps{grid-template-columns:1fr;gap:35px}
+ section{padding:55px 6%}
+ footer{justify-content:center;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+<a href="#" class="logo">🍫 Choco<span>Hub</span></a>
+<div class="links">
+<a href="#home">Home</a>
+<a href="#treats">Our Treats</a>
+<a href="#factory">Factory</a>
+<a href="#story">Our Story</a>
+</div>
+<a href="#treats" class="btn">Shop 🛍️ <span id="cart">0</span></a>
+</nav>
+
+<main>
+<section class="hero" id="home">
+<div>
+<span class="tag">🍓 MADE WITH EXTRA LOVE</span>
+<h1>A little piece of <span class="pink">happy!</span></h1>
+<p>Welcome to ChocoHub, the cutest chocolate factory in town! Meet our chocolate buddies with adorable eyes, tiny tongues, and big sweet personalities.</p>
+<a href="#treats" class="btn">Meet the Choco Buddies 🍫</a>
+</div>
+<div class="art">
+<div class="circle"></div>
+<span class="float f1">🍓</span><span class="float f2">💖</span>
+<span class="float f3">🍬</span><span class="float f4">✨</span>
+<div class="chocolate">
+<div class="eyes"><div class="eye"></div><div class="eye"></div></div>
+<div class="blush l"></div><div class="blush r"></div>
+<div class="mouth"></div>
+</div>
+</div>
+</section>
+
+<div class="ticker">🍫 SWEETNESS OVERLOAD ✦ LITTLE BITES, BIG SMILES ✦ MADE WITH LOVE 💗</div>
+
+<section id="treats">
+<div class="heading">
+<span class="tag">OUR SWEET LITTLE FRIENDS</span>
+<h2>Meet your Choco Besties! 💕</h2>
+<p>Warning: these cuties might steal your heart!</p>
+</div>
+<div class="products">
+<article class="card">
+<div class="product-art pink-bg">
+<div class="mini"><span class="pupils"></span><span class="smile"></span></div>
+<span class="float" style="left:10px;top:12px">💗</span>
+</div>
+<h3>Choco Cheeky</h3>
+<p>A classic chocolate with a cheeky smile.</p>
+<span class="price">Sweet little treat</span>
+<button class="add" data-name="Choco Cheeky" aria-label="Add Choco Cheeky">+</button>
+</article>
+
+<article class="card">
+<div class="product-art yellow-bg">
+<div class="mini" style="background:linear-gradient(120deg,#c48b63,#71412c);transform:rotate(6deg)">
+<span class="pupils"></span><span class="smile"></span></div>
+<span class="float" style="right:10px;top:12px">⭐</span>
+</div>
+<h3>Caramel Cutie</h3>
+<p>A gooey little sweetheart full of fun.</p>
+<span class="price">Extra sweet vibes</span>
+<button class="add" data-name="Caramel Cutie" aria-label="Add Caramel Cutie">+</button>
+</article>
+
+<article class="card">
+<div class="product-art green-bg">
+<div class="mini" style="background:linear-gradient(120deg,#a16b50,#593025)">
+<span class="pupils"></span><span class="smile"></span></div>
+<span class="float" style="right:10px;bottom:10px">🌼</span>
+</div>
+<h3>Choco Sprout</h3>
+<p>A happy chocolate made for sweet moments.</p>
+<span class="price">Pure cocoa joy</span>
+<button class="add" data-name="Choco Sprout" aria-label="Add Choco Sprout">+</button>
+</article>
+</div>
+</section>
+
+<section id="factory" style="padding-top:0">
+<div class="factory">
+<div>
+<span class="tag">✨ OUR MAGIC FACTORY</span>
+<h2>Where cocoa dreams come true!</h2>
+<p>Step into our imaginary chocolate world, where candy clouds float, cocoa rivers flow, and every chocolate has a cute little face!</p>
+<a href="#story" class="btn">Discover Our Story →</a>
+</div>
+<div class="factory-art">🏭🍫🍭</div>
+</div>
+</section>
+
+<section id="story">
+<div class="heading">
+<h2>Made with love, served with smiles 💖</h2>
+<p>Three little steps to a whole lot of happiness.</p>
+</div>
+<div class="steps">
+<div class="step"><div class="emoji">🌱</div><h3>Dream</h3><p>We dream up a world full of delicious chocolate magic.</p></div>
+<div class="step"><div class="emoji">🍫</div><h3>Create</h3><p>Our chocolate buddies come alive with cute personalities.</p></div>
+<div class="step"><div class="emoji">💝</div><h3>Share</h3><p>We spread smiles and sweetness with every little bite.</p></div>
+</div>
+</section>
+
+<section>
+<div class="newsletter">
+<div style="font-size:40px">💌</div>
+<h2>Join the Choco Club!</h2>
+<p>Get a little chocolate happiness in your inbox.</p>
+<form id="subscribe">
+<input type="email" placeholder="Enter your email address" required aria-label="Email address">
+<button class="btn" type="submit">Join Us 💗</button>
+</form>
+<p id="message" role="status"></p>
+</div>
+</section>
+</main>
+
+<footer>
+<div><a href="#" class="logo">🍫 Choco<span>Hub</span></a><p>Life is sweeter with chocolate. ♡</p></div>
+<p>© <span id="year"></span> ChocoHub · Made with love 🍓</p>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+let count = 0;
+let timer;
+
+function showToast(message) {
+const toast = document.getElementById("toast");
+toast.textContent = message;
+toast.classList.add("show");
+clearTimeout(timer);
+timer = setTimeout(() => toast.classList.remove("show"), 2200);
+}
+
+document.querySelectorAll(".add").forEach(button => {
+button.addEventListener("click", () => {
+count++;
+document.getElementById("cart").textContent = count;
+showToast("Yay! " + button.dataset.name + " joined your sweet cart! 🍫");
+});
+});
+
+document.getElementById("subscribe").addEventListener("submit", event => {
+event.preventDefault();
+document.getElementById("message").textContent =
+"Thanks for joining the Choco Club! 💗 (Demo only — no email was sent.)";
+event.target.reset();
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

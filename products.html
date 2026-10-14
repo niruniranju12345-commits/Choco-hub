@@ -1,0 +1,218 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Chocolates | ChocoHub 🍫</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--brown:#542d27;--pink:#f27b9c;--cream:#fff6eb}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;background:var(--cream);color:var(--brown)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:18px 7%;background:#fffaf2;position:sticky;top:0;z-index:10;box-shadow:0 3px 15px #542d2710}
+.logo{font:700 29px Fredoka;color:var(--brown);text-decoration:none}
+.logo span{color:var(--pink)}
+.links{display:flex;gap:22px;font-size:14px}
+.links a{color:var(--brown);text-decoration:none}
+.links a:hover,.links a.active{color:var(--pink)}
+.cart{background:#fbe0e7;padding:10px 17px;border-radius:30px;font-size:14px;font-weight:600}
+.hero{text-align:center;padding:70px 20px 55px;background:linear-gradient(135deg,#ffe8de,#ffdce7)}
+.tag{display:inline-block;background:white;color:#e46c8c;border-radius:30px;padding:9px 17px;font-size:12px;font-weight:600}
+h1{font:700 clamp(40px,6vw,65px) Fredoka;margin:18px 0 12px}
+h1 span{color:#ec7798}
+.hero p{font-size:14px;color:#805b50;line-height:1.8}
+.decor{font-size:26px;margin-top:18px;letter-spacing:10px}
+.tools{max-width:1100px;margin:35px auto 10px;padding:0 20px;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+.search{padding:13px 19px;border:2px solid #f1ded2;border-radius:30px;background:white;font:14px Poppins;width:min(310px,100%);outline:none}
+.search:focus{border-color:var(--pink)}
+.filters{display:flex;gap:8px;flex-wrap:wrap}
+.filter{border:1px solid #ead8cc;background:white;padding:10px 16px;border-radius:25px;cursor:pointer;color:var(--brown);font:500 12px Poppins}
+.filter.active,.filter:hover{background:var(--brown);color:white;border-color:var(--brown)}
+.products{max-width:1100px;margin:25px auto 75px;padding:0 20px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+.card{background:white;border:1px solid #f1e4d9;border-radius:25px;padding:14px;text-align:center;position:relative;transition:.25s;overflow:hidden}
+.card:hover{transform:translateY(-7px);box-shadow:0 14px 30px #542d2714}
+.art{height:205px;border-radius:19px;display:grid;place-items:center;position:relative;overflow:hidden}
+.pinkbg{background:#fbe0e7}.yellowbg{background:#ffedc6}.greenbg{background:#dcf1e1}.purplebg{background:#e9defa}.bluebg{background:#dceef8}.orangebg{background:#ffe3cd}
+.choco{width:105px;height:125px;position:relative;border-radius:17px 17px 24px 24px;background:linear-gradient(120deg,#9a5b40,#4c231b);box-shadow:inset 6px 5px #bd8463,0 9px 0 #d6a18a;transform:rotate(-5deg);transition:.3s}
+.card:hover .choco{transform:rotate(4deg) scale(1.07)}
+.choco:before,.choco:after{content:"";position:absolute;top:37px;width:14px;height:18px;background:white;border-radius:50%}
+.choco:before{left:23px}.choco:after{right:23px}
+.pupils{position:absolute;top:43px;left:29px;width:6px;height:10px;border-radius:50%;background:#28130f;box-shadow:35px 0 #28130f;z-index:1}
+.pupils:before{content:"";position:absolute;top:1px;left:1px;width:3px;height:3px;border-radius:50%;background:white;box-shadow:35px 0 white}
+.mouth{position:absolute;top:65px;left:39px;width:28px;height:23px;border-radius:4px 4px 15px 15px;background:#29100f;overflow:hidden}
+.mouth:after{content:"";position:absolute;bottom:-4px;left:3px;width:22px;height:14px;border-radius:50% 50% 0 0;background:#ff7297}
+.cheeks{position:absolute;top:64px;left:10px;width:17px;height:9px;border-radius:50%;background:#f48b9e;box-shadow:67px 0 #f48b9e}
+.choco:after{z-index:0}
+.candy{position:absolute;font-size:29px;animation:float 3s ease-in-out infinite}
+.c1{left:13px;top:14px}.c2{right:13px;bottom:14px;animation-delay:.7s}
+@keyframes float{50%{transform:translateY(-8px) rotate(8deg)}}
+.badge{position:absolute;top:12px;left:12px;padding:6px 10px;border-radius:20px;background:#fff;color:#e36d8d;font-size:10px;font-weight:600}
+.card h3{font:600 23px Fredoka;margin-top:18px}
+.desc{font-size:12px;color:#977b6f;margin:7px 0 15px;min-height:36px}
+.bottom{display:flex;justify-content:space-between;align-items:center;padding:0 5px 5px}
+.price{font-weight:700;color:#e66d8d;font-size:16px}
+.add{background:var(--brown);color:white;border:0;border-radius:25px;padding:10px 15px;font:500 12px Poppins;cursor:pointer}
+.add:hover{background:var(--pink)}
+.empty{grid-column:1/-1;text-align:center;padding:45px 10px;font-size:17px;color:#95786c}
+.banner{margin:0 auto 70px;max-width:1060px;width:90%;background:#e1f1e2;border-radius:28px;padding:35px 25px;text-align:center}
+.banner h2{font:700 34px Fredoka;margin:10px}
+.banner p{font-size:13px;color:#687e69;margin:10px}
+footer{background:#492820;color:#fff4e8;padding:35px 8%;display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}
+footer p{font-size:12px;color:#ddbcad;margin-top:8px}
+footer .logo{color:white}
+.toast{position:fixed;z-index:20;bottom:22px;left:50%;transform:translate(-50%,100px);background:#492820;color:white;padding:13px 22px;border-radius:30px;transition:.3s;font-size:13px;text-align:center;width:max-content;max-width:90%}
+.toast.show{transform:translate(-50%,0)}
+@media(max-width:760px){.links{display:none}.products{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;padding:0 12px}.art{height:165px}.choco{transform:scale(.85)}.card h3{font-size:19px}.desc{font-size:11px}.bottom{gap:5px}.price{font-size:13px}.add{padding:9px 11px}.tools{justify-content:center}.filters{justify-content:center}}
+@media(max-width:430px){.products{grid-template-columns:1fr;max-width:340px}.art{height:200px}.choco{transform:scale(1)}.card h3{font-size:23px}}
+</style>
+</head>
+<body>
+
+<nav>
+<a class="logo" href="index.html">🍫 Choco<span>Hub</span></a>
+<div class="links">
+<a href="index.html">Home</a>
+<a class="active" href="products.html">Products</a>
+<a href="index.html#factory">Factory</a>
+<a href="index.html#story">Our Story</a>
+</div>
+<div class="cart">🛍️ Cart: <span id="cartCount">0</span></div>
+</nav>
+
+<header class="hero">
+<span class="tag">🍓 FRESH FROM OUR SWEET WORLD</span>
+<h1>Our Choco <span>Cuties!</span> 🍫</h1>
+<p>Little chocolates, big personalities! Find your new sweet bestie.</p>
+<div class="decor">🍬 💗 🍓 ✨ 🍭</div>
+</header>
+
+<div class="tools">
+<input class="search" type="search" id="search" placeholder="🔍 Find your choco buddy..." aria-label="Search chocolates">
+<div class="filters">
+<button class="filter active" data-filter="all">All treats</button>
+<button class="filter" data-filter="classic">Classic</button>
+<button class="filter" data-filter="caramel">Caramel</button>
+<button class="filter" data-filter="milk">Milk chocolate</button>
+<button class="filter" data-filter="berry">Berry</button>
+</div>
+</div>
+
+<main class="products" id="products">
+<article class="card" data-category="classic" data-name="Choco Cheeky">
+<div class="art pinkbg"><span class="badge">BESTIE PICK 💗</span><span class="candy c1">💗</span><div class="choco"><span class="pupils"></span><span class="cheeks"></span><span class="mouth"></span></div><span class="candy c2">✨</span></div>
+<h3>Choco Cheeky</h3><p class="desc">A classic cocoa cutie with a cheeky grin.</p>
+<div class="bottom"><span class="price">₹99</span><button class="add" data-name="Choco Cheeky" data-price="99">Add +</button></div>
+</article>
+
+<article class="card" data-category="caramel" data-name="Caramel Cutie">
+<div class="art yellowbg"><span class="badge">SWEETIE ⭐</span><span class="candy c1">🍯</span><div class="choco" style="background:linear-gradient(120deg,#d4a06c,#80502f);box-shadow:inset 6px 5px #e6ba87,0 9px 0 #dfb99b"><span class="pupils"></span><span class="cheeks"></span><span class="mouth"></span></div><span class="candy c2">⭐</span></div>
+<h3>Caramel Cutie</h3><p class="desc">Smooth caramel sweetness with a happy face.</p>
+<div class="bottom"><span class="price">₹129</span><button class="add" data-name="Caramel Cutie" data-price="129">Add +</button></div>
+</article>
+
+<article class="card" data-category="milk" data-name="Milky Moo">
+<div class="art greenbg"><span class="candy c1">🥛</span><div class="choco" style="background:linear-gradient(120deg,#bd8a68,#80543b)"><span class="pupils"></span><span class="cheeks"></span><span class="mouth"></span></div><span class="candy c2">🐮</span></div>
+<h3>Milky Moo</h3><p class="desc">Creamy milk chocolate that's udderly adorable.</p>
+<div class="bottom"><span class="price">₹119</span><button class="add" data-name="Milky Moo" data-price="119">Add +</button></div>
+</article>
+
+<article class="card" data-category="berry" data-name="Berry Blush">
+<div class="art purplebg"><span class="candy c1">🍓</span><div class="choco" style="background:linear-gradient(120deg,#a85d56,#602b35);box-shadow:inset 6px 5px #d68a87,0 9px 0 #d9a0a2"><span class="pupils"></span><span class="cheeks"></span><span class="mouth"></span></div><span class="candy c2">💕</span></div>
+<h3>Berry Blush</h3><p class="desc">Berry-inspired chocolate with rosy little cheeks.</p>
+<div class="bottom"><span class="price">₹149</span><button class="add" data-name="Berry Blush" data-price="149">Add +</button></div>
+</article>
+
+<article class="card" data-category="classic" data-name="Choco Chunk">
+<div class="art bluebg"><span class="candy c1">🍪</span><div class="choco" style="transform:rotate(5deg);background:linear-gradient(120deg,#75442e,#361811)"><span class="pupils"></span><span class="cheeks"></span><span class="mouth"></span></div><span class="candy c2">💫</span></div>
+<h3>Choco Chunk</h3><p class="desc">A chunky chocolate buddy with a big smile.</p>
+<div class="bottom"><span class="price">₹89</span><button class="add" data-name="Choco Chunk" data-price="89">Add +</button></div>
+</article>
+
+<article class="card" data-category="caramel" data-name="Golden Goo">
+<div class="art orangebg"><span class="candy c1">🍯</span><div class="choco" style="background:linear-gradient(120deg,#c28b56,#754323);box-shadow:inset 6px 5px #e2b77e,0 9px 0 #e0b999"><span class="pupils"></span><span class="cheeks"></span><span class="mouth"></span></div><span class="candy c2">🌟</span></div>
+<h3>Golden Goo</h3><p class="desc">A golden caramel buddy with a gooey heart.</p>
+<div class="bottom"><span class="price">₹139</span><button class="add" data-name="Golden Goo" data-price="139">Add +</button></div>
+</article>
+</main>
+
+<section class="banner">
+<div style="font-size:40px">🏭🍫💗</div>
+<h2>Made with a sprinkle of magic!</h2>
+<p>Every ChocoHub buddy is imagined to bring a smile to your sweetest moments.</p>
+<a class="add" href="index.html" style="display:inline-block;text-decoration:none;padding:12px 22px;margin-top:10px">Back to homepage →</a>
+</section>
+
+<footer>
+<div><a class="logo" href="index.html">🍫 Choco<span>Hub</span></a><p>A little chocolate, a lot of happiness. ♡</p></div>
+<p>© <span id="year"></span> ChocoHub · Made with love 🍓</p>
+</footer>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+const cards = Array.from(document.querySelectorAll(".card"));
+const filters = document.querySelectorAll(".filter");
+const search = document.getElementById("search");
+let activeFilter = "all";
+let cartCount = 0;
+let cartTotal = 0;
+let toastTimer;
+
+function updateProducts() {
+  const term = search.value.trim().toLowerCase();
+  let visible = 0;
+
+  cards.forEach(card => {
+    const matchesCategory = activeFilter === "all" || card.dataset.category === activeFilter;
+    const matchesSearch = card.dataset.name.toLowerCase().includes(term);
+    const show = matchesCategory && matchesSearch;
+    card.hidden = !show;
+    if (show) visible++;
+  });
+
+  let empty = document.getElementById("emptyMessage");
+  if (!empty) {
+    empty = document.createElement("p");
+    empty.id = "emptyMessage";
+    empty.className = "empty";
+    empty.textContent = "No choco buddies found! Try another search 🍫";
+    document.getElementById("products").appendChild(empty);
+  }
+  empty.hidden = visible !== 0;
+}
+
+filters.forEach(button => {
+  button.addEventListener("click", () => {
+    filters.forEach(item => item.classList.remove("active"));
+    button.classList.add("active");
+    activeFilter = button.dataset.filter;
+    updateProducts();
+  });
+});
+
+search.addEventListener("input", updateProducts);
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  toast.textContent = message;
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove("show"), 2300);
+}
+
+document.querySelectorAll(".add[data-price]").forEach(button => {
+  button.addEventListener("click", () => {
+    cartCount++;
+    cartTotal += Number(button.dataset.price);
+    document.getElementById("cartCount").textContent = cartCount;
+    showToast(button.dataset.name + " added! 🍫 Cart total: ₹" + cartTotal);
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+updateProducts();
+</script>
+</body>
+</html>
